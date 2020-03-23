@@ -19,16 +19,16 @@ def client_recv(my_socket):
             my_socket.close()
             break #get out from thread
         data = data.decode('latin-1')
-        print ("client_recv:" + data )
         #print("4444",current_thread().name)
         #gui_q.put(data)
+        print("client receive:"+data)
         pub.sendMessage("update", msg="server response " +data)
 
 def client_send():
     print("start client")
     my_socket = socket()
-    my_socket.connect(("127.0.0.1",5578))
-    #my_socket.connect(("10.0.0.31",8820))
+    my_socket.connect(("127.0.0.1",5678))
+
 
     recvThread = Thread(target=client_recv, args=(my_socket,))
     recvThread.start()
